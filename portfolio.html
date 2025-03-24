@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | AKHIL K</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background: linear-gradient(to right, #1e1e1e, #2c3e50);
+            color: white;
+            transition: background 0.3s, color 0.3s;
+        }
+        .pra1{
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .pra2{
+            margin-top: 10px;
+            margin-left: 180px;
+            display: inline-block;
+        }
+        .pra3{
+            margin-top: 1px;
+            display: inline-block;
+        }
+        .pra4{
+            margin-top: 1px;
+            margin-left: 89px;
+            display: inline-block;
+        }
+        .pra5{
+            margin-top: 1px;
+            display: inline-block;
+        }
+        .pra6{
+            margin-top: 1px;
+            display: inline-block;
+            margin-left: 31px;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            background: rgba(20, 20, 20, 0.9);
+            height: 100vh;
+            position: fixed;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .sidebar h2 {
+            color: #f1c40f;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #f1c40f;
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            background: linear-gradient(to right, #f8f8f8, #d3d3d3);
+            color: black;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 350px;
+            width: calc(100% - 250px);
+            padding: 20px;
+        }
+
+        /* Download CV Button */
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 15px;
+            background: linear-gradient(45deg, #f1c40f, #e67e22);
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #e67e22, #f1c40f);
+            transform: scale(1.05);
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .project-card {
+            width: 300px;
+            height: 250px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+        }
+
+        .project-card h3 {
+            text-align: center;
+            color: white;
+            margin-top: 0px;
+        }
+        .i1 a{
+            color: lightblue;
+        } 
+        .i2 a{
+            color: red;
+        }
+        .i1,.i2{
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+        }
+        footer{
+            text-align: center;
+            color: #f1c40f;
+        }
+
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 60px;
+            }
+
+            .sidebar h2 {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 60px;
+                width: calc(100% - 60px);
+            }
+        }
+    </style>
+    <script>
+        // Dark Mode Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Animated Typing Effect
+        const textArray = ["Web Developer", "Designer", "Freelancer"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const textElement = document.querySelector(".animated-text");
+
+        function typeEffect() {
+            if (charIndex < textArray[textIndex].length && !isDeleting) {
+                textElement.innerHTML = textArray[textIndex].substring(0, charIndex + 1);
+                charIndex++;
+                setTimeout(typeEffect, 100);
+            } else if (charIndex > 0 && isDeleting) {
+                textElement.innerHTML = textArray[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(typeEffect, 50);
+            } else {
+                isDeleting = !isDeleting;
+                if (!isDeleting) {
+                    textIndex = (textIndex + 1) % textArray.length;
+                }
+                setTimeout(typeEffect, 1000);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", typeEffect);
+
+        // 3D Tilt Effect for Projects
+        VanillaTilt.init(document.querySelectorAll(".project-card"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.5
+        });
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h2>Portfolio</h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <h2>Hello, I'm <span class="highlight">AKHIL K</span></h2>
+            <p class="animated-text"></p>
+            <a href="Akhil.K.pdf" download class="btn">Download MY CV</a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p> I'm a dedicated and motivated student interested in the field of cybersecurity. I want to gain more practical experience and apply my knowledge in a supportive environment that fosters learning and professional growth.<br></p>
+            <p class="pra1"> Name: AKHIL K</p>
+            <p class="pra2">D.O.B:</p><br>
+            <p class="pra3">Degree: MSc.Cyber Security</p>
+            <p class="pra4">Ph.no: 94863 23149</p><br>
+            <p class="pra5">Email: akhilkannan2654@gmail.com</p>
+            <p class="pra6">Address:  2/682,Puliyankadu,Veerapandi,Tirupur-641605</p>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-card" data-tilt>
+                    <a href="https://github.com/Akhildcfs/Rootkit-Scanner"><img src="p1.jpg" alt="Project 1"></a>
+                    <h3>Rootkit detection in all linux distros using rkhunter</h3>
+                </div>
+                <div class="project-card" data-tilt>
+                    <img src="p2.jpg" alt="Project 2">
+                    <h3>A multi web application vulnerability scanner</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Email: akhilkannan2654@gmail.com</p>
+            <p class="i1"><a href="https://www.linkedin.com/in/akhil-k-a26885266"><i class="fa-brands fa-linkedin"></i></a></p>
+            <p class="i2"><a href="https://www.instagram.com/akhiii_05/?utm_source=ig_web_button_share_sheet"><i class="fa-brands fa-instagram"></i></a></p>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Akhil k. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>
